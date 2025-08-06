@@ -1,0 +1,19 @@
+steps:
+  - name: 'gcr.io/cloud-builders/flutter'
+    entrypoint: 'flutter'
+    args: ['pub', 'get']
+    id: 'Install Dependencies'
+
+  - name: 'gcr.io/cloud-builders/flutter'
+    entrypoint: 'flutter'
+    args: ['build', 'apk', '--release']
+    id: 'Build Release APK'
+
+artifacts:
+  objects:
+    location: 'gs://$PROJECT_ID-cloudbuild/artifacts/'
+    paths: ['build/app/outputs/apk/release/app-release.apk']
+
+options:
+  machineType: 'N1_HIGHCPU_8'
+  diskSizeGb: 50
