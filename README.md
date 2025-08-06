@@ -1,1 +1,1 @@
-# rozaq-sultoni
+# rozaq-sutoni
